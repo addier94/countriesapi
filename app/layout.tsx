@@ -21,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <main className='bg-light-bg dark:bg-dark-blue-bg h-screen'>
-          <Navbar />
-          <Filter />
-          {children}
-        </main>
+        <Navbar />
+        <Filter />
+        {children}
       </body>
     </html>
   )
