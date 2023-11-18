@@ -2,9 +2,9 @@
 //
 //   import { Convert } from "./file";
 //
-//   const tCountries = Convert.toTCountries(json);
+//   const tCountry = Convert.toTCountry(json);
 
-export interface TCountries {
+export interface TCountry {
   name:         Name;
   tld:          string[];
   cca2:         string;
@@ -14,7 +14,7 @@ export interface TCountries {
   independent:  boolean;
   status:       string;
   unMember:     boolean;
-  currencies:   Currencies;
+  currencies:   { [key: string]: Currency };
   idd:          Idd;
   capital:      string[];
   altSpellings: string[];
@@ -30,7 +30,6 @@ export interface TCountries {
   flag:         string;
   maps:         Maps;
   population:   number;
-  gini:         Gini;
   fifa:         string;
   car:          Car;
   timezones:    string[];
@@ -39,6 +38,7 @@ export interface TCountries {
   coatOfArms:   CoatOfArms;
   startOfWeek:  string;
   capitalInfo:  CapitalInfo;
+  postalCode:   PostalCode;
 }
 
 export interface CapitalInfo {
@@ -55,11 +55,7 @@ export interface CoatOfArms {
   svg: string;
 }
 
-export interface Currencies {
-  XOF: Xof;
-}
-
-export interface Xof {
+export interface Currency {
   name:   string;
   symbol: string;
 }
@@ -80,17 +76,14 @@ export interface Flags {
   alt: string;
 }
 
-export interface Gini {
-  "2014": number;
-}
-
 export interface Idd {
   root:     string;
   suffixes: string[];
 }
 
 export interface Languages {
-  fra: string;
+  // msa: string;
+  [key: string]: string;
 }
 
 export interface Maps {
@@ -105,7 +98,7 @@ export interface Name {
 }
 
 export interface NativeName {
-  fra: Translation;
+  msa: Translation;
 }
 
 export interface Translation {
@@ -113,13 +106,18 @@ export interface Translation {
   common:   string;
 }
 
+export interface PostalCode {
+  format: string;
+  regex:  string;
+}
+
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toTCountries(json: string): TCountries[] {
+  public static toTCountry(json: string): TCountry[] {
       return JSON.parse(json);
   }
 
-  public static tCountriesToJson(value: TCountries[]): string {
+  public static tCountryToJson(value: TCountry[]): string {
       return JSON.stringify(value);
   }
 }

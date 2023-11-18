@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={nunito.className}>
         <Navbar />
-        <Filter />
+        {/* <Filter /> */}
         {children}
       </body>
     </html>
