@@ -1,6 +1,6 @@
 import { getCountry } from "@/actions/get-country"
 import { formatNumber } from "@/lib/helpers";
-import { TCountry } from "@/type/country-type"
+import { TCountries } from "@/type/countries-type";
 import { MoveLeft } from "lucide-react"
 import Image from 'next/image';
 import Link from "next/link";
@@ -13,7 +13,7 @@ export default async function CountryPage({
   params
 }:CountryPageProps) {
   // destructure the first position of the array, 'cause there we have it country 
-  const [ country ]:TCountry[] = await getCountry(params.countryName)
+  const [ country ]:TCountries[] = await getCountry(params.countryName)
 
   const { name: { nativeName }, currencies, languages } = country;
   const dynamicNativeNameKey = Object.keys(nativeName)[0]

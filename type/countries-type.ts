@@ -56,7 +56,8 @@ export interface CoatOfArms {
 }
 
 export interface Currencies {
-  XOF: Xof;
+  // XOF: Xof;
+  [key:string]: Xof
 }
 
 export interface Xof {
@@ -90,7 +91,8 @@ export interface Idd {
 }
 
 export interface Languages {
-  fra: string;
+  // fra: string;
+  [key:string]: string
 }
 
 export interface Maps {
