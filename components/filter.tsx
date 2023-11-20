@@ -27,7 +27,6 @@ const Filter = () => {
         }
       }, {skipEmptyString: true, skipNull: true})
   
-      console.log('first', url)
       router.push(url)
     } else {
       router.push('/')

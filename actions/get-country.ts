@@ -5,7 +5,8 @@ export const getCountry = async (country: string): Promise<TCountries[]> => {
     const resp = await fetch(`https://restcountries.com/v3.1/name/${country}`)
 
     if(!resp.ok) {
-      throw new Error(`Failed to fetch country data. Status: ${resp.status}`)
+      // throw new Error(`Failed to fetch country data. Status: ${resp.status}`)
+      return []
     }
 
     const data:TCountries[] = await resp.json()
