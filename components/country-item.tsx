@@ -2,7 +2,7 @@ import { TCountries } from "@/type/countries-type"
 import Image from "next/image"
 import Link from "next/link"
 
-const CountryItem = ({
+export const CountryItem = ({
   name,
   flags,
   population,
@@ -19,8 +19,8 @@ const CountryItem = ({
           src={flags.svg}
         />
       </section>
-      <section className="font-semibold px-7 pb-14 text-lg leading-8">
-        <h2 className="font-extrabold text-2xl mt-9 mb-5">{name.common}</h2>
+      <section className="font-semibold px-7 pb-8 text-lg leading-7">
+        <h2 className="font-extrabold text-2xl mt-4 mb-3">{name.common}</h2>
         <p>Population: <span className="font-light">{population}</span></p>
         <p>Region: <span className="font-light">{region}</span></p>
         <p>Capital: <span className="font-light">{capital}</span></p>
@@ -28,5 +28,3 @@ const CountryItem = ({
     </Link>
   )
 }
-
-export default CountryItem

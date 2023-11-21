@@ -1,8 +1,9 @@
 import { getByRegion } from "@/actions/get-by-region"
 import { getCountry } from "@/actions/get-country"
 import { getDashboardCountries } from "@/actions/get-dashboard-countries"
-import CountryItem from "@/components/country-item"
-import { Filter } from "@/components/filter"
+import { CountryItem } from "@/components/country-item"
+import { FilterByName } from "@/components/filter-by-name"
+import { FilterByRegion } from "@/components/filter-by-region"
 import { TCountries } from "@/type/countries-type"
 
 interface SearchHomePageProps {
@@ -34,9 +35,12 @@ const HomePage = async ({
 
   return (
     <>
-      <Filter />
+      <div className="flex flex-col gap-y-10 px-16 py-7 dark:bg-dark-blue-bg md:flex-row md:justify-between">
+        <FilterByName />
+        <FilterByRegion />
+      </div>
       <article 
-        className="px-16 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8 dark:bg-dark-blue-bg min-h-[calc(100vh-192px)]"
+        className="px-16 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-14 dark:bg-dark-blue-bg min-h-[calc(100vh-192px)] items-start pb-10"
       >
         {countries.length > 0 && countries.map((country, id) => (
           <CountryItem

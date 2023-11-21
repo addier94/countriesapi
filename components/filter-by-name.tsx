@@ -1,8 +1,11 @@
+'use client'
+
 import qs from "query-string"
+import { useEffect, useState } from "react"
+
 import { useDebounce } from "@/hook/use-debounce"
 import { Search } from "lucide-react"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
 
 export const FilterByName = () => {
   const [value, setValue] = useState('')

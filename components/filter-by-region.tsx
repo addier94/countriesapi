@@ -1,7 +1,10 @@
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import qs from 'query-string'
+'use client'
 
+import qs from 'query-string'
 import { ChangeEvent, useState } from "react"
+
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+
 
 export const FilterByRegion = () => {
   const pathname = usePathname()
