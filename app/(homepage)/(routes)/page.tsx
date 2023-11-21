@@ -1,7 +1,8 @@
+import { getByRegion } from "@/actions/get-by-region"
 import { getCountry } from "@/actions/get-country"
 import { getDashboardCountries } from "@/actions/get-dashboard-countries"
 import CountryItem from "@/components/country-item"
-import Filter from "@/components/filter"
+import { Filter } from "@/components/filter"
 import { TCountries } from "@/type/countries-type"
 
 interface SearchHomePageProps {
@@ -12,17 +13,23 @@ interface SearchHomePageProps {
 }
 
 const HomePage = async ({
-  searchParams: { countryname }
+  searchParams: { countryname, region }
 }: SearchHomePageProps) => {
 
   // let countries:TCountries[] = await getDashboardCountries()
   let countries:TCountries[] = []
 
-  if(countryname){
-    // handle search by name of country
-    countries = await getCountry(countryname)
-  } else {
-    countries = await getDashboardCountries()
+  try {
+    if(countryname){
+      // handle search by name of country
+      countries = await getCountry(countryname)
+    } else if(region) {
+      countries = await getByRegion(region)
+    } else {
+      countries = await getDashboardCountries()
+    }
+  } catch {
+    return countries = []    
   }
 
   return (
